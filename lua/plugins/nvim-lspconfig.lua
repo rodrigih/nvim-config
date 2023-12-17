@@ -7,7 +7,7 @@ local config = function()
 	local lspconfig = require("lspconfig")
 
 	-- Setup icons
-	for type, icon in pairs(diagnostic_signs) do 
+	for type, icon in pairs(diagnostic_signs) do
 		local hl = "DiagnosticSign" .. type
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 	end
@@ -47,12 +47,19 @@ local config = function()
 		},
 	})
 
+	-- C/C++
+	lspconfig.clangd.setup({
+		on_attach = on_attach,
+		cmd = { "clangd", "--offset-encoding=utf-16" },
+	})
+
 	-- Elixir
 	lspconfig.elixirls.setup({
 		on_attach = on_attach,
 		cmd = { "/usr/bin/elixir-ls/language_server.sh" },
 	})
 
+	-- Lua
 	local luacheck = require("efmls-configs.linters.luacheck")
 	local stylua = require("efmls-configs.formatters.stylua")
 
@@ -60,11 +67,17 @@ local config = function()
 	local flake8 = require("efmls-configs.linters.flake8")
 	local black = require("efmls-configs.formatters.black")
 
+	--C/C++
+	local cpplint = require("efmls-configs.linters.cpplint")
+	local clangformat = require("efmls-configs.formatters.clang_format")
+
 	-- Configure efm server
 	lspconfig.efm.setup({
 		filetypes = {
 			"lua",
 			"python",
+			"c",
+			"cpp",
 		},
 		init_options = {
 			documentFormatting = true,
@@ -78,6 +91,8 @@ local config = function()
 			languages = {
 				lua = { luacheck, stylua },
 				python = { flake8, black },
+				c = { clangformat, cpplint },
+				cpp = { clangformat, cpplint },
 			},
 		},
 	})
