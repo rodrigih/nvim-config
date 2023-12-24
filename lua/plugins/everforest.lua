@@ -1,4 +1,3 @@
---require("lazy").setup({
 return {
   "neanias/everforest-nvim",
   version = false,
@@ -9,6 +8,5 @@ return {
     require("everforest").setup({
       require('everforest').load()
     })
-    vim.o.background = "light"
   end,
 }

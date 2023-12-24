@@ -25,7 +25,8 @@ local opts = {
 		lazy = true,
 	},
 	install = {
-		colorscheme = { "everforest" },
+		colorscheme = { "kanagawa" },
+    -- colorscheme = { "rose-pine" }
 	},
 	rtp = {
 		disabled_plugins = {
