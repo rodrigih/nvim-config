@@ -67,9 +67,13 @@ local config = function()
 	local flake8 = require("efmls-configs.linters.flake8")
 	local black = require("efmls-configs.formatters.black")
 
-	--C/C++
+	-- C/C++
 	local cpplint = require("efmls-configs.linters.cpplint")
 	local clangformat = require("efmls-configs.formatters.clang_format")
+
+	-- Javascript
+	local eslint = require("efmls-configs.linters.eslint_d")
+	local prettier = require("efmls-configs.formatters.prettier")
 
 	-- Configure efm server
 	lspconfig.efm.setup({
@@ -78,6 +82,7 @@ local config = function()
 			"python",
 			"c",
 			"cpp",
+			"javascript",
 		},
 		init_options = {
 			documentFormatting = true,
@@ -93,6 +98,7 @@ local config = function()
 				python = { flake8, black },
 				c = { clangformat, cpplint },
 				cpp = { clangformat, cpplint },
+				javascript = { prettier, eslint },
 			},
 		},
 	})

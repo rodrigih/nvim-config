@@ -25,8 +25,8 @@ local opts = {
 		lazy = true,
 	},
 	install = {
-		colorscheme = { "kanagawa" },
-    -- colorscheme = { "rose-pine" }
+		-- colorscheme = { "kanagawa" },
+		colorscheme = { "rose-pine" }
 	},
 	rtp = {
 		disabled_plugins = {
@@ -40,10 +40,9 @@ local opts = {
 			"zipPlugin",
 		},
 	},
-    change_detection = {
-      notify = false,
-    }
+	change_detection = {
+		notify = false,
+	},
 }
 
 require("lazy").setup("plugins", opts)
-
