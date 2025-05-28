@@ -3,6 +3,7 @@
 -- ####################
 --
 require("config")
+
 -- ####################
 --    Colour Schemes
 -- ####################
@@ -11,6 +12,7 @@ require("config")
 --vim.cmd.colorscheme('everforest')
 --vim.cmd.colorscheme('melange')
 --vim.cmd.colorscheme 'melange'
-vim.cmd.colorscheme("kanagawa-wave")
+-- vim.cmd.colorscheme("kanagawa-wave")
+vim.cmd.colorscheme("tokyonight-storm")
 
 require("nvim-web-devicons").setup()

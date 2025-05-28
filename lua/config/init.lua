@@ -1,6 +1,8 @@
--- ~/.local/share/nvim
+-- Lazy Plugin Manager
+-- NOTE: location of plugins ~/.local/share/nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
+-- Installs Laxy if not already installed
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
@@ -14,12 +16,14 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+-- import Vims config files for options/globals/keymaps etc.
 require("config.globals")
 require("config.options")
 require("config.keymaps")
 require("config.autocmd")
 require("config.user-commands")
 
+-- Plugin Options
 local opts = {
 	defaults = {
 		lazy = true,

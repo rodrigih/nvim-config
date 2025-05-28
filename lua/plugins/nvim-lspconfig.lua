@@ -59,6 +59,11 @@ local config = function()
 		cmd = { "/usr/bin/elixir-ls/language_server.sh" },
 	})
 
+	-- Typescript
+	lspconfig.ts_ls.setup({
+		on_attach = on_attach,
+	})
+
 	-- Lua
 	local luacheck = require("efmls-configs.linters.luacheck")
 	local stylua = require("efmls-configs.formatters.stylua")
@@ -81,13 +86,14 @@ local config = function()
 	-- Configure efm server
 	lspconfig.efm.setup({
 		filetypes = {
-			"lua",
-			"python",
 			"c",
 			"cpp",
 			"css",
+			"html",
 			"javascript",
 			"javascriptreact",
+			"lua",
+			"python",
 			"typescript",
 			"typescriptreact",
 		},
@@ -101,15 +107,15 @@ local config = function()
 		},
 		settings = {
 			languages = {
-				lua = { luacheck, stylua },
-				python = { flake8, black },
 				c = { clangformat, cpplint },
 				cpp = { clangformat, cpplint },
-				css = { prettier, stylelint },
-				javascript = { prettier, eslint },
-				javascriptreact = { prettier, eslint },
-				typescript = { prettier, eslint },
-				typescriptreact = { prettier, eslint },
+				css = { stylelint, prettier },
+				javascript = { eslint, prettier },
+				javascriptreact = { eslint, prettier },
+				lua = { stylua, luacheck },
+				python = { black, flake8 },
+				typescript = { eslint, prettier },
+				typescriptreact = { eslint, prettier },
 			},
 		},
 	})

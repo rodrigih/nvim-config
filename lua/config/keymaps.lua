@@ -12,6 +12,7 @@ vim.api.nvim_set_keymap("n", "<leader>v", '"+p', {})
 -- NvimTree
 
 keymap.set("n", "<C-n>", ":NvimTreeToggle<Enter>", { noremap = true, silent = true })
+keymap.set("n", "<leader>t", ":NvimTreeFindFile<CR>", {})
 
 -- Comments (plugin)
 vim.api.nvim_set_keymap("n", "<C-_>", "gcc", { noremap = false })

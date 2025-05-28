@@ -24,3 +24,8 @@ opt.shiftwidth = 2
 opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
+
+-- Change to fix LSP Saga Bug
+vim.diagnostic.config({
+  severity_sort = true,
+})
