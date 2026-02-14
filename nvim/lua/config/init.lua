@@ -2,7 +2,7 @@
 -- NOTE: location of plugins ~/.local/share/nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
--- Installs Laxy if not already installed
+-- Installs Lazy if not already installed
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",

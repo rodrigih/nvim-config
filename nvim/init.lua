@@ -9,10 +9,6 @@ require("config")
 -- ####################
 
 --vim.o.background = "light"
---vim.cmd.colorscheme('everforest')
---vim.cmd.colorscheme('melange')
---vim.cmd.colorscheme 'melange'
--- vim.cmd.colorscheme("kanagawa-wave")
-vim.cmd.colorscheme("tokyonight-storm")
+vim.cmd.colorscheme("duskfox")
 
 require("nvim-web-devicons").setup()

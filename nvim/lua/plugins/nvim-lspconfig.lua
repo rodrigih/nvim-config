@@ -4,8 +4,6 @@ local diagnostic_signs = require("util.icons").diagnostic_signs
 local config = function()
 	require("neoconf").setup({})
 
-	local lspconfig = require("lspconfig")
-
 	-- Setup icons
 	for type, icon in pairs(diagnostic_signs) do
 		local hl = "DiagnosticSign" .. type
@@ -13,7 +11,7 @@ local config = function()
 	end
 
 	-- Lua
-	lspconfig.lua_ls.setup({
+	vim.lsp.config("lua_ls", {
 		on_attach = on_attach,
 		settings = {
 			Lua = {
@@ -33,7 +31,7 @@ local config = function()
 	})
 
 	-- Python
-	lspconfig.pyright.setup({
+	vim.lsp.config("pyright", {
 		on_attach = on_attach,
 		settings = {
 			pyright = {
@@ -47,20 +45,8 @@ local config = function()
 		},
 	})
 
-	-- C/C++
-	lspconfig.clangd.setup({
-		on_attach = on_attach,
-		cmd = { "clangd", "--offset-encoding=utf-16" },
-	})
-
-	-- Elixir
-	lspconfig.elixirls.setup({
-		on_attach = on_attach,
-		cmd = { "/usr/bin/elixir-ls/language_server.sh" },
-	})
-
 	-- Typescript
-	lspconfig.ts_ls.setup({
+	vim.lsp.config("ts_ls", {
 		on_attach = on_attach,
 	})
 
@@ -84,7 +70,7 @@ local config = function()
 	local prettier = require("efmls-configs.formatters.prettier_d")
 
 	-- Configure efm server
-	lspconfig.efm.setup({
+	vim.lsp.config("efm", {
 		filetypes = {
 			"c",
 			"cpp",
@@ -120,12 +106,16 @@ local config = function()
 		},
 	})
 
+  -- Enable LSPs
+  vim.lsp.enable({"lua_ls", "pyright", "ts_ls", "efm"})
+
 	-- Format on Save
 	local lsp_fmt_group = vim.api.nvim_create_augroup("LspFormattingGroup", {})
+
 	vim.api.nvim_create_autocmd("BufWritePost", {
 		group = lsp_fmt_group,
 		callback = function()
-			local efm = vim.lsp.get_active_clients({ name = "efm" })
+			local efm = vim.lsp.get_clients({ name = "efm" })
 
 			if vim.tbl_isempty(efm) then
 				return
@@ -134,6 +124,7 @@ local config = function()
 			vim.lsp.buf.format({ name = "efm" })
 		end,
 	})
+
 end
 
 return {
