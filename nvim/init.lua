@@ -9,6 +9,6 @@ require("config")
 -- ####################
 
 --vim.o.background = "light"
-vim.cmd.colorscheme("duskfox")
+vim.cmd.colorscheme("dawnfox")
 
 require("nvim-web-devicons").setup()

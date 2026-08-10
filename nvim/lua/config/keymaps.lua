@@ -18,3 +18,5 @@ keymap.set("n", "<leader>t", ":NvimTreeFindFile<CR>", {})
 vim.api.nvim_set_keymap("n", "<C-_>", "gcc", { noremap = false })
 vim.api.nvim_set_keymap("v", "<C-_>", "gcc", { noremap = false })
 
+-- Lsp Saga
+vim.api.nvim_set_keymap("n", "<leader>d", ":Lspsaga show_line_diagnostics<Enter>", { noremap = false })
