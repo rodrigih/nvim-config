@@ -69,6 +69,9 @@ local config = function()
   local eslint = require("efmls-configs.linters.eslint_d")
   local prettier = require("efmls-configs.formatters.prettier_d")
 
+  -- Elixir
+  local mix = require("efmls-configs.formatters.mix")
+
   -- Configure efm server
   vim.lsp.config("efm", {
     filetypes = {
@@ -76,6 +79,7 @@ local config = function()
       "c",
       "cpp",
       "css",
+      "elixir",
       "html",
       "javascript",
       "javascriptreact",
@@ -98,6 +102,7 @@ local config = function()
         c = { clangformat, cpplint },
         cpp = { clangformat, cpplint },
         css = { stylelint, prettier },
+        elixir = { mix },
         javascript = { eslint, prettier },
         javascriptreact = { eslint, prettier },
         lua = { stylua, luacheck },
