@@ -4,11 +4,12 @@
 --
 require("config")
 
+
+require("nvim-web-devicons").setup()
+
 -- ####################
 --    Colour Schemes
 -- ####################
 
---vim.o.background = "light"
-vim.cmd.colorscheme("dawnfox")
 
-require("nvim-web-devicons").setup()
+vim.cmd.colorscheme("catppuccin-frappe")
